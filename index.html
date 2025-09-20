@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Shah Nawaz | Software Engineer</title>
+    <meta name="description"
+        content="Portfolio of Muhammad Shah Nawaz, Software Engineering student specializing in AI, System Programming, and Web Development">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                        },
+                        secondary: {
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                        },
+                        dark: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+        }
+
+        .dark body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .active-nav::after {
+            width: 100%;
+        }
+
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e2e8f0;
+        }
+
+        .dark .skill-bar {
+            background-color: #334155;
+        }
+
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            transition: width 1s ease-in-out;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .dark .project-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body class="dark:bg-dark-900 dark:text-gray-200">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-dark-800/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold gradient-text">Muhammad Shah Nawaz Portfolio</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link active-nav">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <button id="theme-toggle"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-secondary-500">
+                        <i data-feather="moon" class="hidden dark:block"></i>
+                        <i data-feather="sun" class="dark:hidden"></i>
+                    </button>
+                </div>
+                <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                    <i data-feather="menu"></i>
+                </button>
+            </div>
+            <!-- Mobile menu -->
+            <div class="md:hidden hidden pt-4" id="mobile-menu">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="nav-link active-nav">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <button id="theme-toggle-mobile"
+                        class="flex items-center text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-secondary-500">
+                        <span class="mr-2">Toggle Theme</span>
+                        <i data-feather="moon" class="hidden dark:block"></i>
+                        <i data-feather="sun" class="dark:hidden"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center relative overflow-hidden pt-20">
+        <div id="vanta-bg" class="absolute inset-0"></div>
+        <div class="container mx-auto px-6 z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                        Hi, I'm <span class="gradient-text">Muhammad Shah Nawaz</span>
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-8">
+                        Software Engineering Student & Developer
+                    </h2>
+                    <p class="text-lg mb-8 text-gray-600 dark:text-gray-300 max-w-lg">
+                        Passionate about building innovative solutions and exploring the depths of computer science.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#projects"
+                            class="gradient-bg text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                            View My Projects
+                        </a>
+                        <a href="#contact"
+                            class="border border-primary-500 text-primary-500 dark:text-secondary-500 dark:border-secondary-500 px-6 py-3 rounded-lg font-medium hover:bg-primary-50 dark:hover:bg-dark-700 transition-all duration-300">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center" data-aos="fade-left">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full blur-md opacity-75 animate-pulse">
+                        </div>
+                        <img src="shah.jpg" alt="Profile"
+                            class="relative w-full h-full rounded-full object-cover border-4 border-white dark:border-dark-800 shadow-xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50 dark:bg-dark-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16 gradient-text" data-aos="fade-up">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center" data-aos="fade-right">
+                    <div class="relative w-64 h-64">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full blur-md opacity-75 animate-pulse">
+                        </div>
+                        <img src="shah.jpg" alt="Profile"
+                            class="relative w-full h-full rounded-full object-cover border-4 border-white dark:border-dark-800 shadow-xl">
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-16" data-aos="fade-left">
+                    <h3 class="text-2xl font-semibold mb-4">Software Engineering Student</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        I'm a passionate Software Engineering student with a strong interest in AI, Operating Systems,
+                        Databases, and System Programming. My journey in computer science has been driven by curiosity
+                        and the desire to solve complex problems through innovative solutions.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-white dark:bg-dark-700 p-6 rounded-lg shadow-md">
+                            <h4 class="font-semibold text-lg mb-3 flex items-center">
+                                <i data-feather="book" class="mr-2 text-primary-500"></i> Education
+                            </h4>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                <span class="font-medium">Bachelor of Science in Software Engineering</span><br>
+                                FAST NUCES CFD campus<br>
+                                2023 - Present
+                            </p>
+                        </div>
+                        <div class="bg-white dark:bg-dark-700 p-6 rounded-lg shadow-md">
+                            <h4 class="font-semibold text-lg mb-3 flex items-center">
+                                <i data-feather="target" class="mr-2 text-primary-500"></i> Focus Areas
+                            </h4>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-1">
+                                <li>• Artificial Intelligence</li>
+                                <li>• Operating Systems</li>
+                                <li>• Database Systems</li>
+                                <li>• System Programming</li>
+                                <li>• Web Development</li>
+                                <li>• AI/ML</li>
+                                <li>• Data Science</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="#"
+                        class="inline-flex items-center text-primary-500 dark:text-secondary-500 font-medium hover:underline">
+                        Download Resume
+                        <i data-feather="download" class="ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16 gradient-text" data-aos="fade-up">My Skills</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Programming Languages -->
+                <div class="bg-white dark:bg-dark-700 p-6 rounded-lg shadow-md" data-aos="fade-up">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <i data-feather="code" class="mr-2 text-primary-500"></i> Programming Languages
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>C++</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Python</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Java</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web Development -->
+                <div class="bg-white dark:bg-dark-700 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <i data-feather="globe" class="mr-2 text-primary-500"></i> Web Development
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>HTML/CSS</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>PHP</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>MySQL</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Core CS Concepts -->
+                <div class="bg-white dark:bg-dark-700 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <i data-feather="cpu" class="mr-2 text-primary-500"></i> Core CS Concepts
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Operating Systems</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>DBMS</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>System Programming</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="bg-white dark:bg-dark-700 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <i data-feather="tool" class="mr-2 text-primary-500"></i> Tools
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Git/GitHub</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>VS Code</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>XAMPP</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50 dark:bg-dark-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16 gradient-text" data-aos="fade-up">My Projects</h2>
+
+            <div class="flex justify-center mb-12 space-x-4" data-aos="fade-up">
+                <button class="filter-btn active px-4 py-2 rounded-full gradient-bg text-white"
+                    data-filter="all">All</button>
+                <button
+                    class="filter-btn px-4 py-2 rounded-full border border-primary-500 text-primary-500 dark:text-secondary-500 dark:border-secondary-500"
+                    data-filter="python">Python</button>
+                <button
+                    class="filter-btn px-4 py-2 rounded-full border border-primary-500 text-primary-500 dark:text-secondary-500 dark:border-secondary-500"
+                    data-filter="cpp">C++</button>
+                <button
+                    class="filter-btn px-4 py-2 rounded-full border border-primary-500 text-primary-500 dark:text-secondary-500 dark:border-secondary-500"
+                    data-filter="java">Java</button>
+                <button
+                    class="filter-btn px-4 py-2 rounded-full border border-primary-500 text-primary-500 dark:text-secondary-500 dark:border-secondary-500"
+                    data-filter="web">Web</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tic Tac Toe -->
+                <div class="project-card bg-white dark:bg-dark-700 rounded-lg overflow-hidden shadow-md transition-all duration-300"
+                    data-category="python" data-aos="fade-up">
+                    <img src="http://static.photos/gaming/640x360/1" alt="Tic Tac Toe" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Tic Tac Toe</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Classic two-player game implemented in Python
+                            with a console interface.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-2 py-1 bg-primary-100 dark:bg-dark-600 text-primary-800 dark:text-primary-300 text-xs rounded-full">Python</span>
+                            <span
+                                class="px-2 py-1 bg-primary-100 dark:bg-dark-600 text-primary-800 dark:text-primary-300 text-xs rounded-full">Game</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#"
+                                class="text-primary-500 dark:text-secondary-500 hover:underline flex items-center">
+                                <i data-feather="github" class="w-4 h-4 mr-1"></i> Code
+                            </a>
+                            <a href="#"
+                                class="text-primary-500 dark:text-secondary-500 hover:underline flex items-center">
+                                <i data-feather="external-link" class="w-4 h-4 mr-1"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Book App -->
+                <div class="project-card bg-white dark:bg-dark-700 rounded-lg overflow-hidden shadow-md transition-all duration-300"
+                    data-category="python" data-aos="fade-up" data-aos-delay="100">
+                    <img src="http://static.photos/office/640x360/2" alt="Contact Book"
+                        class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Contact Book App</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">CRUD application for managing contacts with
+                            search and filtering capabilities.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-2 py-1 bg-primary-100 dark:bg-dark-600 text-primary-800 dark:text-primary-300 text-xs rounded-full">Python</span>
+                            <span
+                                class="px-2 py-1 bg-primary-100 dark:bg-dark-600 text-primary-800 dark:text-primary-300 text-xs rounded-full">CRUD</span>
+                            <span
+                                class="px-2 py-1 bg-primary-100 dark:bg-dark-600 text-primary-800 dark:text-primary-300 text-xs rounded-full">Tkinter</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/swz-ultra-1202/Contact-Book-Application"
+                                class="text-primary-500 dark:text-secondary-500 hover:underline flex items-center">
+                                <i data-feather="github" class="w-4 h-4 mr-1"></i> Code
+                            </a>
+                            <a href="#"
+                                class="text-primary-500 dark:text-secondary-500 hover:underline flex items-center">
+                                <i data-feather="external-link" class="w-4 h-4 mr-1"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mini Instagram -->
+                <div class="project-card bg-white dark:bg-dark-700 rounded-lg overflow-hidden shadow-md transition-all duration-300"
+                    data-category="cpp" data-aos="fade-up" data-aos-delay="200">
+                    <img src="http://static.photos/social/640x360/3" alt="Mini Instagram"
+                        class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Mini Instagram</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Social media simulation with posts, messages,
+                            and friend requests (C++ with Python GUI).</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-2 py-1 bg-primary-100 dark:bg-dark-600 text-primary-800 dark:text-primary-300 text-xs rounded-full">C++</span>
+                            <span
+                                class="px-2 py-1 bg-primary-100 dark:bg-dark-600 text-primary-800 dark:text-primary-300 text-xs rounded-full">Python</span>
+                            <span
+                                class="px-2 py-1 bg-primary-100 dark:bg-dark-600 text-primary-800 dark:text-primary-300 text-xs rounded-full">GUI</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/swz-ultra-1202/Mini-Instagram"
+                                class="text-primary-500 dark:text-secondary-500 hover:underline flex items-center">
+                                <i data-feather="github" class="w-4 h-4 mr-1"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mini OS -->
+                <div class="project-card bg-white dark:bg-dark-700 rounded-lg overflow-hidden shadow-md transition-all duration-300"
+                    data-category="cpp" data-aos="fade-up">
+                    <img src="http://static.photos/technology/640x360/4" alt="Mini OS" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Mini OS</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">OS simulation with hardware, process
+                            management, UI, and file system modules.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-2 py-1 bg-primary-100 dark:bg-dark-600 text-primary-800 dark:text-primary-300 text-xs rounded-full">C++</span>
+                            <span
+                                class="px-2 py-1 bg-primary-100 dark:bg-dark-600 text-primary-800 dark:text-primary-300 text-xs rounded-full">OS</span>
+                            <span
+                                class="px-2 py-1 bg-primary-100 dark:bg-dark-600 text-primary-800 dark:text-primary-300 text-xs rounded-full">System</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/swz-ultra-1202/Mini-Operating-System"
+                                class="text-primary-500 dark:text-secondary-500 hover:underline flex items-center">
+                                <i data-feather="github" class="w-4 h-4 mr-1"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jarvis -->
+                <div class="project-card bg-white dark:bg-dark-700 rounded-lg overflow-hidden shadow-md transition-all duration-300"
+                    data-category="python" data-aos="fade-up" data-aos-delay="100">
+                    <img src="http://static.photos/ai/640x360/5" alt="Jarvis" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Jarvis</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Voice-controlled assistant with speech
+                            recognition and text-to-speech capabilities.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-2 py-1 bg-primary-100 dark:bg-dark-600 text-primary-800 dark:text-primary-300 text-xs rounded-full">Python</span>
+                            <span
+                                class="px-2 py-1 bg-primary-100 dark:bg-dark-600 text-primary-800 dark:text-primary-300 text-xs rounded-full">AI</span>
+                            <span
+                                class="px-2 py-1 bg-primary-100 dark:bg-dark-600 text-primary-800 dark:text-primary-300 text-xs rounded-full">Voice</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#"
+                                class="text-primary-500 dark:text-secondary-500 hover:underline flex items-center">
+                                <i data-feather="github" class="w-4 h-4 mr-1"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GUI Calculator -->
+                <div class="project-card bg-white dark:bg-dark-700 rounded-lg overflow-hidden shadow-md transition-all duration-300"
+                    data-category="python" data-aos="fade-up" data-aos-delay="200">
+                    <img src="http://static.photos/education/640x360/6" alt="GUI Calculator"
+                        class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">GUI Calculator</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">User-friendly calculator for basic arithmetic
+                            operations with a graphical interface.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-2 py-1 bg-primary-100 dark:bg-dark-600 text-primary-800 dark:text-primary-300 text-xs rounded-full">Python</span>
+                            <span
+                                class="px-2 py-1 bg-primary-100 dark:bg-dark-600 text-primary-800 dark:text-primary-300 text-xs rounded-full">Tkinter</span>
+                            <span
+                                class="px-2 py-1 bg-primary-100 dark:bg-dark-600 text-primary-800 dark:text-primary-300 text-xs rounded-full">GUI</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/swz-ultra-1202/Tkinter_Python_Calculator_beginner"
+                                class="text-primary-500 dark:text-secondary-500 hover:underline flex items-center">
+                                <i data-feather="github" class="w-4 h-4 mr-1"></i> Code
+                            </a>
+                            <a href="https://github.com/swz-ultra-1202/Tkinter_Python_Calculator_beginner"
+                                class="text-primary-500 dark:text-secondary-500 hover:underline flex items-center">
+                                <i data-feather="external-link" class="w-4 h-4 mr-1"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+               
+
+                
+               
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16 gradient-text" data-aos="fade-up">Get In Touch</h2>
+
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2" data-aos="fade-right">
+                    <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-8">
+                        Feel free to reach out if you're looking for a developer, have a question, or just want to
+                        connect.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div
+                                class="flex-shrink-0 bg-primary-100 dark:bg-dark-700 p-3 rounded-full text-primary-500 dark:text-secondary-500">
+                                <i data-feather="mail"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium">Email</h4>
+                                <a href="mailto:shahnawaz@example.com"
+                                    class="text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-secondary-500">shahnawaz@example.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div
+                                class="flex-shrink-0 bg-primary-100 dark:bg-dark-700 p-3 rounded-full text-primary-500 dark:text-secondary-500">
+                                <i data-feather="github"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium">GitHub</h4>
+                                <a href="https://github.com/shahnawaz" target="_blank"
+                                    class="text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-secondary-500">github.com/shahnawaz</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div
+                                class="flex-shrink-0 bg-primary-100 dark:bg-dark-700 p-3 rounded-full text-primary-500 dark:text-secondary-500">
+                                <i data-feather="linkedin"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium">LinkedIn</h4>
+                                <a href="https://linkedin.com/in/shahnawaz" target="_blank"
+                                    class="text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-secondary-500">linkedin.com/in/shahnawaz</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-10">
+                        <h4 class="font-medium mb-4">Connect with me</h4>
+                        <div class="flex space-x-4">
+                            
+                            <a href="https://www.instagram.com/swz_1202/"
+                                class="bg-primary-100 dark:bg-dark-700 p-3 rounded-full text-primary-500 dark:text-secondary-500 hover:bg-primary-200 dark:hover:bg-dark-600 transition-colors">
+                                <i data-feather="instagram"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <form class="bg-white dark:bg-dark-700 p-8 rounded-lg shadow-md">
+                        <div class="mb-6">
+                            <label for="name"
+                                class="block text-gray-700 dark:text-gray-300 font-medium mb-2">Name</label>
+                            <input type="text" id="name"
+                                class="w-full px-4 py-2 border border-gray-300 dark:border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-secondary-500 bg-white dark:bg-dark-800">
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="email"
+                                class="block text-gray-700 dark:text-gray-300 font-medium mb-2">Email</label>
+                            <input type="email" id="email"
+                                class="w-full px-4 py-2 border border-gray-300 dark:border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-secondary-500 bg-white dark:bg-dark-800">
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="message"
+                                class="block text-gray-700 dark:text-gray-300 font-medium mb-2">Message</label>
+                            <textarea id="message" rows="5"
+                                class="w-full px-4 py-2 border border-gray-300 dark:border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-secondary-500 bg-white dark:bg-dark-800"></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="gradient-bg text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300 w-full">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 dark:bg-dark-800 py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-gray-600 dark:text-gray-300">&copy; 2025 Muhammad Shah Nawaz.
+                    </p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://github.com/swz-ultra-1202" target="_blank"
+                        class="text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-secondary-500">
+                        <i data-feather="github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/muhammad-shah-nawaz-491701340/" target="_blank"
+                        class="text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-secondary-500">
+                        <i data-feather="linkedin"></i>
+                    </a>
+                    <a href="mailto:shahnawaz.swz1202@gmail.com"
+                        class="text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-secondary-500">
+                        <i data-feather="mail"></i>
+                    </a>
+
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Initialize Feather Icons
+        feather.replace();
+
+        // Dark mode toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        [themeToggle, themeToggleMobile].forEach(btn => {
+            if (btn) {
+                btn.addEventListener('click', function () {
+                    document.documentElement.classList.toggle('dark');
+                    localStorage.setItem('color-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+                });
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Nav link active state
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function setActiveNavLink() {
+            const scrollPosition = window.scrollY + 100;
+
+            navLinks.forEach(link => {
+                const sectionId = link.getAttribute('href');
+                if (sectionId !== '#') {
+                    const section = document.querySelector(sectionId);
+                    if (section) {
+                        const sectionTop = section.offsetTop;
+                        const sectionHeight = section.offsetHeight;
+
+                        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                            link.classList.add('active-nav');
+                        } else {
+                            link.classList.remove('active-nav');
+                        }
+                    }
+                }
+            });
+        }
+
+        window.addEventListener('scroll', setActiveNavLink);
+        window.addEventListener('load', setActiveNavLink);
+
+        // Project filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active', 'gradient-bg', 'text-white'));
+                filterButtons.forEach(btn => btn.classList.add('border', 'border-primary-500', 'text-primary-500', 'dark:text-secondary-500', 'dark:border-secondary-500'));
+                this.classList.add('active', 'gradient-bg', 'text-white');
+                this.classList.remove('border', 'border-primary-500', 'text-primary-500', 'dark:text-secondary-500', 'dark:border-secondary-500');
+
+                const filter = this.getAttribute('data-filter');
+
+                // Filter projects
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Vanta.js background
+        VANTA.NET({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x6366f1,
+            backgroundColor: 0xf8fafc,
+            points: 12.00,
+            maxDistance: 22.00,
+            spacing: 18.00
+        });
+
+        // Animate skill bars on scroll
+        const skillBars = document.querySelectorAll('.skill-progress');
+
+        function animateSkillBars() {
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        }
+
+        const skillsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkillBars();
+                    skillsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        const skillsSection = document.getElementById('skills');
+        if (skillsSection) {
+            skillsObserver.observe(skillsSection);
+        }
+    </script>
+</body>
+
+</html>
